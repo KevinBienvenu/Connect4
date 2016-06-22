@@ -118,13 +118,12 @@ public class ScreenGame extends Screen{
 				for(int x=0; x<grille.sizeX; x++){
 					for(int y=0; y<grille.sizeY; y++){
 						if(this.grille.getCase(x, y).getState()>0 && !vector.contains(this.grille.getCase(x, y))){
-							System.out.println("philippe");
 							this.grille.getCase(x, y).setState(this.grille.getCase(x, y).getState()+2);
 						}
 					}
 				}
 			}
-			if(this.nbFrameSkipped==this.nbFrameToSkip){
+			if(this.nbFrameSkipped>=this.nbFrameToSkip){
 				this.game.switchToScreen(new EndOfGameScreen(this.game, a));
 			}
 		}
@@ -136,18 +135,9 @@ public class ScreenGame extends Screen{
 		if(flag){
 			if(!this.isBlocked){
 				this.isBlocked = true;
-				Vector<Case> vector = this.grille.getWinningCases();
-				this.grille.cleanGrille();
-				for(int x=0; x<grille.sizeX; x++){
-					for(int y=0; y<grille.sizeY; y++){
-						if(this.grille.getCase(x, y).getState()>0 && !vector.contains(this.grille.getCase(x, y))){
-							this.grille.getCase(x, y).setState(this.grille.getCase(x, y).getState()+2);
-						}
-					}
-				}
 			}
-			if(this.nbFrameSkipped==this.nbFrameToSkip){
-				this.game.switchToScreen(new EndOfGameScreen(this.game, a));
+			if(this.nbFrameSkipped>=this.nbFrameToSkip){
+				this.game.switchToScreen(new EndOfGameScreen(this.game, 0));
 			}
 		}
 	}
@@ -194,6 +184,7 @@ public class ScreenGame extends Screen{
 			}
 		} else {
 			if(this.droppingJeton!=null){
+				this.grille.cleanGrille();
 				this.handleAnimationJeton();
 			} else {
 				this.nbFrameSkipped++;

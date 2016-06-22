@@ -23,7 +23,7 @@ public class Images {
 		Images.imageJetonRouge = new Image("assets/jetonRouge.png").getScaledCopy(ScreenGame.coefZoomGrille);
 		Images.imageJetonJauneDark = Images.imageJetonJaune.getScaledCopy(1f);
 		Images.imageJetonRougeDark = Images.imageJetonRouge.getScaledCopy(1f);
-		Images.imageJetonJauneDark.setAlpha(0.7f);
+		Images.imageJetonJauneDark.setAlpha(0.3f);
 		Images.imageJetonRougeDark.setAlpha(0.7f);
 		Images.imageVictory = new Image("assets/bulleRouge.png");
 		Images.imageDefeat = new Image("assets/bulleJaune.png");
